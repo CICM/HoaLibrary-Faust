@@ -4,7 +4,8 @@ declare author "Pierre Guillot, Eliott Paris, Julien Colafrancesco";
 declare copyright "2012-2015 Guillot, Paris, Colafrancesco, CICM, Labex Arts H2H, U. Paris 8";
 import("math.lib");
 
-HoaEncoder3d(N, x, theta, phi) = par(i, (N+1) * (N+1), x * y(degree(i), order(i), theta, phi))
+
+HoaEncoder3D(N, x, theta, phi) = par(i, (N+1) * (N+1), x * y(degree(i), order(i), theta, phi))
 with
 {
 	// The degree l of the harmonic[l, m]	
@@ -61,4 +62,32 @@ with
 	};
 };
 
-process(x, theta, phi) = HoaEncoder3d(3, x, theta, phi);
+HoaOptimBasic3D(N) = par(i, (N+1) * (N+1), _);
+
+HoaOptimMaxRe3D(N) = par(i, (N+1) * (N+1), MaxRe(N, degree(i), _))
+with 
+{
+	// The degree l of the harmonic[l, m]	
+	degree(index)  = int(sqrt(index));
+   	MaxRe(N, l, _)= _ * cos(l  / (2*N+2) * PI);
+};
+
+HoaOptimInPhase3D(N) = par(i, (N+1) * (N+1), InPhase(N, degree(i), _))
+with 
+{
+	// The degree l of the harmonic[l, m]	
+	degree(index)  = int(sqrt(index));
+   	InPhase(N, l, _)= _ * (fact(N) * fact(N)) / (fact(N - l) * fact(N + l))
+	with
+	{
+		fact(0) = 1;
+		fact(n) = n * fact(n-1);
+	};
+};
+
+
+HoaDecoder3D(N, theta, phi) = par(i, (N+1) * (N+1), _) : _/(2), par(i, (N+1) * (N+1) - 1, _), HoaEncoder3D(N, 12.5 / ((N+1) * (N+1)), theta, phi) : dot((N+1) * (N+1));
+
+
+
+process(x, theta, phi) = HoaEncoder3D(2, x, theta, phi) : HoaOptimInPhase3D(2);

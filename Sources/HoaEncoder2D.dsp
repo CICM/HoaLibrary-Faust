@@ -4,7 +4,7 @@ declare author "Pierre Guillot, Eliott Paris, Julien Colafrancesco";
 declare copyright "2012-2015 Guillot, Paris, Colafrancesco, CICM, Labex Arts H2H, U. Paris 8";
 import("math.lib");
 
-HoaEncoder2d(N, x, theta) = par(i, N*2+1,  e(order(i), theta))
+HoaEncoder2D(N, x, theta) = par(i, N*2+1,  e(order(i), theta))
 with
 {
 	// The order m of the harmonic[m]	
@@ -21,4 +21,4 @@ with
 		ecalcul(s, m, theta) = 1;
 	}; 
 };
-process(x, theta) = HoaEncoder2d(3, x, theta);
+process(x, theta) = HoaEncoder2D(3, x, theta);
