@@ -2,7 +2,8 @@
 
 ##### Version :
 
-Hoa.lib 1.2 for Faust (<a title="Download" href="http://www.mshparisnord.fr/hoalibrary/en/downloads/" target="_blank">Download</a>). The hoa.lib file contains the high order ambisonics functions in FAUST. This file should already be included in the last FAUST distribution. You just need to include hoa.lib before coding to use it. 
+Hoa.lib 1.3 for Faust (<a title="Download" href="http://www.mshparisnord.fr/hoalibrary/en/downloads/" target="_blank">Download</a>). The hoa.lib file contains the high order ambisonics functions in FAUST. This version  isn't included in the Faust distribution (for now).
+Home of the project : <a title="https://framagit.org/wargreen/hoalibrary-faust" href="https://framagit.org/wargreen/hoalibrary-faust" target="_blank">https://framagit.org/wargreen/hoalibrary-faust</a>
 
 ![Image Faust](https://raw.github.com/CICM/HoaLibrary/master/Ressources/PhotoFaust.png "Faust Scene")
 
@@ -30,6 +31,6 @@ The hoa.library in under the <a title="GNU" href="http://www.gnu.org/copyleft/gp
 
 - rotate : applies a rotation of the sound field.
 
-- encoder3D : encodes a signal in the 3D circular harmonics domain depending on an order of decomposition and an angle.
+- encoder3D : encodes a signal in the 3D circular harmonics domain depending on an order of decomposition and two angle.
 
 - optimBasic3D, optimMaxRe3D, optimInPhase3D : weights the 3D circular harmonics signals depending to the ambisonics optimization. It can be "basic" for no optimization, "maxRe" or "inPhase".
